@@ -3,30 +3,35 @@ package step.step7.boj_2675;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
 
-	// 문자열 반복
+	// 단어 공부
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
-		StringTokenizer st;
-		int len = Integer.parseInt(br.readLine());
-		for(int i=0; i<len; i++) {
-			st = new StringTokenizer(br.readLine(), " ");
-			int repeat = Integer.parseInt(st.nextToken());	// 반복횟수
-			String str = st.nextToken();	// 문자열
-			// 각 문자 순환
-			for(int j=0; j<str.length(); j++) {
-				// 반복 횟수만큼 문자 추가
-				for(int k=0; k<repeat; k++) {
-					sb.append(str.charAt(j));
-				}
+		int[] arr = new int[26];
+		String str = br.readLine();
+		// 각 문자 for 돌면서 대문자 / 소문자 구분하여 해당 문자에 맞는 배열에 +1
+		for(int i=0; i<str.length(); i++) {
+			if('a' <= str.charAt(i) && str.charAt(i) <= 'z' ) {
+				arr[str.charAt(i)-'a']++;
+			}else {
+				arr[str.charAt(i)-'A']++;
 			}
-			sb.append(System.lineSeparator());
 		}
-		System.out.println(sb.toString());
+		
+		int max=0;
+		char ch = '?';
+		// 최댓값 찾기, 최댓값 같을 경우 '?' 출력
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i] > max) {
+				max = arr[i];
+				ch = (char) (i+'A');	// 대문자 출력
+			}else if(arr[i] == max){
+				ch = '?';
+			}
+		}
+		System.out.println(ch);
 	}
 }
