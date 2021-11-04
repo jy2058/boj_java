@@ -49,6 +49,8 @@ public class Main {
 		max가 변할 때 count = (2*max -1)
 
 	 */
+
+
 }
 
 
