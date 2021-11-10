@@ -52,7 +52,7 @@ public class boj_2108 {
                     flag = true;    // 첫 등장이므로 true로 변경
                 } else if (modMax == arr[i] && flag == true) {
                     mode = i - 4000;
-                    flag = false;
+                    flag = false;   // 다음에 값은 최빈값이 나오더라도 두번째로 작은값은 그대로기 때문에
                 }
             }
         }
